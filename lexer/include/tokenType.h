@@ -11,7 +11,6 @@
 
 #define STR(x) #x
 #define CASE_STR(x) case x : return STR(x); break;
-
 enum TokenType {
     Plus,   // +
     Minus,  // -

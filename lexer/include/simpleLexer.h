@@ -1536,12 +1536,113 @@ public:
                     }
                     break;
                 case DfaState::MINUS:
-                    if (isBlank(ch)) {
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
                         token->setTokenType(TokenType::MINUS);
                         state = initToken(ch);
-                    } else if (isDigit(ch) || isAlpha(ch)) {
-                        state = DfaState::IDENTIFIER;
-                        tokenText.append(ch);
+                    } if (ch == '-') {
+                        state = DfaState::MINUS_MINUS;
+                    }if (ch == '=') {
+                        state = DfaState::MINUS_EQUAL;
+                    }if (ch == '>') {
+                        state = DfaState::MINUS_GREATER;
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::MINUS_MINUS:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::MINUS_MINUS);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::MINUS_EQUAL:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::MINUS_EQUAL);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::MINUS_GREATER:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::MINUS_GREATER);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::EXCLAMATION_POINT:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::EXCLAMATION_POINT);
+                        state = initToken(ch);
+                    }if (ch == '=') {
+                        state = DfaState::EXCLAMATION_POINT_EQUAL;
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::PERCENT:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::PERCENT);
+                        state = initToken(ch);
+                    }if (ch == '=') {
+                        state = DfaState::PERCENT_EQUAL;
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::PERCENT_EQUAL:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::PERCENT_EQUAL);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::AMPERSAND:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::AMPERSAND);
+                        state = initToken(ch);
+                    }if (ch == '&') {
+                        state = DfaState::DOUBLE_AMPERSAND;
+                    }if (ch == '=') {
+                        state = DfaState::AMPERSAND_EQUAL;
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::DOUBLE_AMPERSAND:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::DOUBLE_AMPERSAND);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::AMPERSAND_EQUAL:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::AMPERSAND_EQUAL);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::OPEN_PAREN:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::OPEN_PAREN);
+                        state = initToken(ch);
+                    }else {
+                        error();
+                    }
+                    break;
+                case DfaState::CLOSE_PAREN:
+                    if ((isDigit(ch) || isAlpha(ch)||isBlank(ch)) {
+                        token->setTokenType(TokenType::OPEN_PAREN);
+                        state = initToken(ch);
+                    }else {
+                        error();
                     }
                     break;
                 default:
